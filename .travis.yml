@@ -1,0 +1,17 @@
+language: ruby
+cache: bundler
+script:
+- bundle exec rake spec
+rvm:
+- 2.4.5
+- 2.5.7
+matrix:
+  fast_finish: true
+deploy:
+  provider: rubygems
+  on:
+    rvm: 2.5.7
+    tags: true
+    all_branches: true
+notifications: 
+  email: false
