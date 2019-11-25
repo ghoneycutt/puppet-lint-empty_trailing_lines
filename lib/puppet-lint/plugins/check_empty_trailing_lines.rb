@@ -13,5 +13,8 @@ PuppetLint.new_check(:empty_trailing_lines) do
 
   def fix(problem)
     remove_token(tokens.last.prev_token)
+    if tokens.last.prev_token.type == :NEWLINE && tokens.last.type == :NEWLINE
+      fix(problem)
+    end
   end
 end

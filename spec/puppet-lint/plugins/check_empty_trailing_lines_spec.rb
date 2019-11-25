@@ -16,6 +16,18 @@ describe 'empty_trailing_lines' do
       end
     end
 
+    context 'code ending with many extra newlines' do
+      let(:code) { "foo\n\n\n'test'\n\n\n\n" }
+
+      it 'should detect a single problem' do
+        expect(problems).to have(1).problem
+      end
+
+      it 'should create a warning' do
+        expect(problems).to contain_warning(msg).on_line(6).in_column(0)
+      end
+    end
+
     context 'code ending with a newline' do
       let(:code) { "foo\n\n\n'test'\n" }
 
@@ -43,6 +55,22 @@ describe 'empty_trailing_lines' do
 
       it 'should fix the problem' do
         expect(problems).to contain_fixed(msg).on_line(4).in_column(0)
+      end
+
+      it 'should add a newline to the end of the manifest' do
+        expect(manifest).to eq("foo\n\n\n'test'\n")
+      end
+    end
+
+    context 'code ending with many extra newlines' do
+      let(:code) { "foo\n\n\n'test'\n\n\n\n" }
+
+      it 'should only detect a single problem' do
+        expect(problems).to have(1).problem
+      end
+
+      it 'should fix the problem' do
+        expect(problems).to contain_fixed(msg).on_line(6).in_column(0)
       end
 
       it 'should add a newline to the end of the manifest' do
