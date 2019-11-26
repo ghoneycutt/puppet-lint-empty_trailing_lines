@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Gem::Specification.new do |spec|
   spec.name        = 'puppet-lint-empty_trailing_lines'
   spec.version     = '0.0.1'
@@ -18,9 +20,10 @@ Gem::Specification.new do |spec|
   EOF
 
   spec.add_dependency             'puppet-lint', '>= 2.0', '< 3.0'
+  spec.add_development_dependency 'rake', '>= 13.0', '< 14.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
-  spec.add_development_dependency 'rspec-its', '~> 1.0'
   spec.add_development_dependency 'rspec-collection_matchers', '~> 1.0'
-  spec.add_development_dependency 'simplecov'
-  spec.add_development_dependency 'rake'
+  spec.add_development_dependency 'rspec-its', '~> 1.0'
+  spec.add_development_dependency 'rubocop-rspec', '>= 1.0', '< 2.0'
+  spec.add_development_dependency 'simplecov', '>= 0.17.1', '< 2.0'
 end
