@@ -37,7 +37,7 @@ This plugin provides a new check to `puppet-lint`.
 ### What you should have done
 
 ```puppet
-  # Not left empty lines at the end of the file
+  # No empty lines left at the end of the file
     file { '/foo':
       ensure => 'file',
     }
