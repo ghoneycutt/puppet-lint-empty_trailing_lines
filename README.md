@@ -46,6 +46,20 @@ This plugin provides a new check to `puppet-lint`.
 
 ### Disabling the check
 
+#### Control comment
+
+```
+# lint:ignore:empty_trailing_lines
+```
+
 #### From the command line
 
+```
+--no-empty_trailing_lines-check
+```
+
 #### In your `Rakefile`
+
+```
+PuppetLint.configuration.send("disable_empty_trailing_lines")
+```
