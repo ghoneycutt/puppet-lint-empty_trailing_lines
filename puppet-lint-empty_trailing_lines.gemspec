@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
     Extends puppet-lint to ensure that your manifest files do not end with extra empty lines
   EOF
 
-  spec.add_dependency             'puppet-lint', '>= 2.0', '< 3.0'
+  spec.add_dependency             'puppet-lint', '>= 2.0', '< 4.0'
   spec.add_development_dependency 'rake', '>= 13.0', '< 14.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'rspec-collection_matchers', '~> 1.0'
