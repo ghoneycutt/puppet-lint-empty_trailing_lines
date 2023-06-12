@@ -24,6 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'rspec-collection_matchers', '~> 1.0'
   spec.add_development_dependency 'rspec-its', '~> 1.0'
-  spec.add_development_dependency 'rubocop-rspec', '>= 1.0', '< 2.0'
+  spec.add_development_dependency 'rubocop', '>= 1.22.3', '< 2.0'
+  spec.add_development_dependency 'rubocop-rspec', '>= 2.0', '< 3.0'
   spec.add_development_dependency 'simplecov', '>= 0.17.1', '< 2.0'
 end
