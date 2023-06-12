@@ -1,37 +1,39 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'empty_trailing_lines' do
   let(:msg) { 'too many empty lines at the end of the file' }
 
   context 'with fix disabled' do
-    context 'code ending with an extra newline' do
+    context 'when code ending with an extra newline' do
       let(:code) { "foo\n\n\n'test'\n\n" }
 
-      it 'should detect a single problem' do
+      it 'detects a single problem' do
         expect(problems).to have(1).problem
       end
 
-      it 'should create a warning' do
+      it 'creates a warning' do
         expect(problems).to contain_warning(msg).on_line(4).in_column(0)
       end
     end
 
-    context 'code ending with many extra newlines' do
+    context 'when code ending with many extra newlines' do
       let(:code) { "foo\n\n\n'test'\n\n\n\n" }
 
-      it 'should detect a single problem' do
+      it 'detects a single problem' do
         expect(problems).to have(1).problem
       end
 
-      it 'should create a warning' do
+      it 'creates a warning' do
         expect(problems).to contain_warning(msg).on_line(6).in_column(0)
       end
     end
 
-    context 'code ending with a newline' do
+    context 'when code ending with a newline' do
       let(:code) { "foo\n\n\n'test'\n" }
 
-      it 'should not detect any problems' do
+      it 'does not detect any problems' do
         expect(problems).to have(0).problems
       end
     end
@@ -46,46 +48,46 @@ describe 'empty_trailing_lines' do
       PuppetLint.configuration.fix = false
     end
 
-    context 'code ending with an extra newline' do
+    context 'when code ending with an extra newline' do
       let(:code) { "foo\n\n\n'test'\n\n" }
 
-      it 'should only detect a single problem' do
+      it 'onlies detect a single problem' do
         expect(problems).to have(1).problem
       end
 
-      it 'should fix the problem' do
+      it 'fixes the problem' do
         expect(problems).to contain_fixed(msg).on_line(4).in_column(0)
       end
 
-      it 'should add a newline to the end of the manifest' do
+      it 'adds a newline to the end of the manifest' do
         expect(manifest).to eq("foo\n\n\n'test'\n")
       end
     end
 
-    context 'code ending with many extra newlines' do
+    context 'when code ending with many extra newlines' do
       let(:code) { "foo\n\n\n'test'\n\n\n\n" }
 
-      it 'should only detect a single problem' do
+      it 'onlies detect a single problem' do
         expect(problems).to have(1).problem
       end
 
-      it 'should fix the problem' do
+      it 'fixes the problem' do
         expect(problems).to contain_fixed(msg).on_line(6).in_column(0)
       end
 
-      it 'should add a newline to the end of the manifest' do
+      it 'adds a newline to the end of the manifest' do
         expect(manifest).to eq("foo\n\n\n'test'\n")
       end
     end
 
-    context 'code ending in a newline' do
+    context 'when code ending in a newline' do
       let(:code) { "foo\n\n\n'test'\n" }
 
-      it 'should not detect any problems' do
+      it 'does not detect any problems' do
         expect(problems).to have(0).problems
       end
 
-      it 'should not modify the manifest' do
+      it 'does not modify the manifest' do
         expect(manifest).to eq(code)
       end
     end

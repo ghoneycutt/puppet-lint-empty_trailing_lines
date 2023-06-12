@@ -6,7 +6,7 @@ AllCops:
   DisplayCopNames: true
   TargetRubyVersion: '2.5'
   Include:
-  - "./**/*.rb"
+  - "**/*.rb"
   Exclude:
   - bin/*
   - ".vendor/**/*"
@@ -15,4 +15,8 @@ AllCops:
   - "vendor/**/*"
 
 Naming/HeredocDelimiterNaming:
+  Enabled: false
+Metrics/BlockLength:
+  Enabled: false
+RSpec/DescribeClass:
   Enabled: false
